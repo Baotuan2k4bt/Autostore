@@ -38,9 +38,9 @@ public class Car {
 
     @ManyToMany
     @JoinTable(
-            name = "carServices", // tên bảng trung gian
-            joinColumns = @JoinColumn(name = "carId"),
-            inverseJoinColumns = @JoinColumn(name = "serviceId")
+            name = "car_service_mapping", // ✅ tên khác với bảng chính
+            joinColumns = @JoinColumn(name = "car_id"),
+            inverseJoinColumns = @JoinColumn(name = "service_id")
     )
     private List<CarService> services;
 }
