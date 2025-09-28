@@ -17,7 +17,7 @@ public class Pricing {
     private BigDecimal price;
 
     @ManyToOne
-    @JoinColumn(name = "carId")
+    @JoinColumn(name = "carID")
     private Car car;
 
     public Pricing() {

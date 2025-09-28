@@ -1,45 +1,47 @@
 package com.example.autostore.model;
 
-
-
 import com.example.autostore.Enum.PaymentStatus;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.*;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Payment")
-@Data
+@Table(name = "payment")
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer paymentId;
 
-    @Column(nullable = false)
-    private BigDecimal amount;
+    @ManyToOne
+    @JoinColumn(name = "bookingId", nullable = false)
+    private Booking booking;  // Liên kết với đơn đặt xe
 
     @Column(nullable = false)
-    private String method; // Ví dụ: "CREDIT_CARD", "BANK_TRANSFER", "CASH"
+    private Double amount; // Số tiền thanh toán
 
-    @Column(nullable = false)
-    private LocalDateTime paymentDate;
+    @Column(nullable = false, length = 50)
+    private String paymentMethod; // CreditCard, MoMo, VNPay...
 
     @Enumerated(EnumType.STRING)
-    private PaymentStatus status;
+    private PaymentStatus status; // SUCCESS, FAILED, PENDING
 
-    @ManyToOne
-    @JoinColumn(name = "userId") // người thanh toán
-    private AppUser appUser;
+    @Column(updatable = false)
+    private LocalDateTime paymentDate;
 
-    @OneToOne
-    @JoinColumn(name = "bookingId", referencedColumnName = "bookingId")
-    private Booking booking;
+
+
+    @PrePersist
+    protected void onCreate() {
+        this.paymentDate = LocalDateTime.now();
+        if (this.status == null) {
+            this.status = PaymentStatus.PENDING;
+        }
+    }
 }
-

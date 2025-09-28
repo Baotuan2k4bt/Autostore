@@ -1,8 +1,9 @@
 package com.example.autostore.Enum;
 
 public enum PaymentStatus {
-    PENDING,
-    COMPLETED,
-    FAILED,
-    CANCELLED
+    SUCCESS,   // Thanh toán thành công
+    FAILED,    // Thanh toán thất bại
+    PENDING,    // Đang chờ xử lý
+    REFUNDED
+
 }

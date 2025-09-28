@@ -1,0 +1,118 @@
+.main-content {
+    margin-left: 100px;
+    margin-top: 80px;
+    padding: 20px;
+    min-height: calc(100vh - 110px);
+    transition: margin-left 0.1s ease;
+    background-color:#E4E7ED;
+    padding-bottom: 80px;
+}
+
+.wrapper{
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+}
+.search-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    padding: 8px;
+    border-radius: 25px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.search-form {
+    display: flex;
+    align-items: center;
+    border-radius: 50px;
+    overflow: hidden;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-form select,
+.search-form input,
+.search-form button {
+    border: none;
+    outline: none;
+    border: none;
+    outline: none;
+}
+
+.search-form select {
+    border-radius: 50px 0 0 50px;
+    padding: 8px 12px;
+    border-right: 2px solid #E4E7ED;
+}
+
+.search-form input {
+    border-radius: 0;
+    padding: 8px 12px;
+    flex-grow: 1;
+    border-radius: 0;
+    padding: 8px 12px;
+    flex-grow: 1;
+    width: 400px;
+}
+
+.search-form button {
+    background-color: #D10024;
+    color: white;
+    border-radius: 0 50px 50px 0;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 0 50px 50px 0;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 50px;
+}
+
+.search-form button:hover {
+    background-color: #B0001E;
+    background-color: #B0001E;
+}
+
+.search-form select:focus,
+.search-form input:focus {
+    outline: none;
+}
+.btn-create {
+    border-radius: 50px;
+    background-color: #30475E;
+    color: white;
+    padding: 8px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-create:hover {
+    background-color: #22313F;
+}
+body.sidebar-collapsed .main-content {
+    margin-left: 0px;
+    transition: margin-left 0.3s ease-in-out;
+}
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.selectButton{
+    cursor: pointer;;
+}
+.selectButton:hover{
+    background-color: green !important;
+    color: white;
+}
+.removeProductList{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
