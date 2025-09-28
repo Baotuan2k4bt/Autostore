@@ -1,10 +1,12 @@
-package com.example.autostore.controller;
+package com.example.autostore.controller.users;
 
-import com.example.autostore.dto.request.AuthenticationRequest;
-import com.example.autostore.dto.request.IntrospectRequest;
-import com.example.autostore.dto.response.ApiResponse;
-import com.example.autostore.dto.response.AuthenticationResponse;
-import com.example.autostore.dto.response.IntrospectResponse;
+import com.example.autostore.dto.user.request.AuthenticationRequest;
+import com.example.autostore.dto.user.request.IntrospectRequest;
+import com.example.autostore.dto.user.request.LogoutRequest;
+import com.example.autostore.dto.user.request.RefreshRequest;
+import com.example.autostore.dto.user.response.ApiResponse;
+import com.example.autostore.dto.user.response.AuthenticationResponse;
+import com.example.autostore.dto.user.response.IntrospectResponse;
 import com.example.autostore.service.AuthenticationService;
 import com.nimbusds.jose.JOSEException;
 import lombok.AccessLevel;
@@ -40,6 +42,20 @@ public class AuthenticationController {
             throws ParseException, JOSEException {
         var result = authenticationService.introspect(request);
         return ApiResponse.<IntrospectResponse>builder()
+                .result(result)
+                .build();
+    }
+    @PostMapping("/logout")
+    ApiResponse<Void> logout(@RequestBody LogoutRequest request) throws ParseException, JOSEException {
+        authenticationService.logout(request);
+        return ApiResponse.<Void>builder().build();
+    }
+
+    @PostMapping("/refresh")
+    ApiResponse<AuthenticationResponse> refresh(@RequestBody RefreshRequest request)
+            throws ParseException, JOSEException {
+        var result = authenticationService.refreshToken(request);
+        return ApiResponse.<AuthenticationResponse>builder()
                 .result(result)
                 .build();
     }

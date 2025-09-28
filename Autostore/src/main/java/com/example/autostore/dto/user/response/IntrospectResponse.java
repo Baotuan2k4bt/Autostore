@@ -1,4 +1,4 @@
-package com.example.autostore.dto.request;
+package com.example.autostore.dto.user.response;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -8,7 +8,6 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class AuthenticationRequest {
-    String username;
-    String password;
+public class IntrospectResponse {
+    boolean valid;
 }

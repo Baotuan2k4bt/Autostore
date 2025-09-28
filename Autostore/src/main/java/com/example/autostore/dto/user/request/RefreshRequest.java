@@ -1,4 +1,4 @@
-package com.example.autostore.dto.response;
+package com.example.autostore.dto.user.request;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -8,6 +8,6 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class IntrospectResponse {
-    boolean valid;
+public class RefreshRequest {
+    String token;
 }

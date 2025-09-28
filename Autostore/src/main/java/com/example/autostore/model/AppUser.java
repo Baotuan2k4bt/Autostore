@@ -1,12 +1,22 @@
 package com.example.autostore.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Entity
+
 @Table(name = "Users")
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Entity
 public class AppUser {
+
+    public static final String ROLE_ADMIN = "ADMIN";
+    public static final String ROLE_USER = "USER";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,24 +41,10 @@ public class AppUser {
     @Column(name = "userIsActive")
     private Boolean userIsActive = true;
 
-    @ManyToOne
-    @JoinColumn(name = "roleId", referencedColumnName = "roleId")
-    private Role role;
+    private String role;
 
     @OneToOne(mappedBy = "appUser", cascade = CascadeType.ALL)
     private Customer customer;
-
-    public AppUser() {}
-
-    public AppUser(AppUser appUser) {
-        this.userId = appUser.userId;
-        this.userName = appUser.userName;
-        this.userPassword = appUser.userPassword;
-        this.userEmail = appUser.userEmail;
-        this.userPhone = appUser.userPhone;
-        this.userFullName = appUser.userFullName;
-        this.userIsActive = appUser.userIsActive;
-    }
 
 
 }

@@ -1,4 +1,4 @@
-package com.example.autostore.dto.response;
+package com.example.autostore.dto.user.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
