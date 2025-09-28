@@ -37,7 +37,7 @@ public class SecurityConfig {
             "/api/brands/**",
             "/api/cartypes/**",
             "/api/user/cars/**",
-            "/reports/**"
+            "/reports/**",
     };
 
     private final CustomJwtDecoder customJwtDecoder;
@@ -54,6 +54,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(request -> request.requestMatchers(HttpMethod.POST, PUBLIC_ENDPOINTS)
                         .permitAll()
                         .requestMatchers(HttpMethod.GET,"/cars/**", "/images/**","/api/reviews/**","/api/admin/bookings/**","/api/brands/**","/api/cartypes/**","/api/user/cars/**","/reports/**")
+                        .permitAll()
+                        .requestMatchers("/api/admin/payments/create", "/api/admin/payments/vnpay-return")
                         .permitAll()
                         .anyRequest()
                         .authenticated())
