@@ -42,7 +42,7 @@ public class PaymentController {
         this.vnPayService = vnPayService;
     }
 
-    // ✅ Danh sách (phân trang + tìm kiếm + filter) → Trả về PageResponse DTO
+
     @GetMapping
     public PageResponse<PaymentDTO> getPayments(
             @RequestParam(required = false) String keyword,
@@ -64,14 +64,14 @@ public class PaymentController {
         );
     }
 
-    // ✅ Lấy chi tiết theo ID
+
     @GetMapping("/{id}")
     public PaymentDTO getPaymentById(@PathVariable Integer id) {
         Payment payment = paymentService.getPaymentById(id);
         return PaymentMapper.toDTO(payment);
     }
 
-    // ✅ Cập nhật Payment (Admin chỉnh sửa, không tạo mới từ đầu)
+
     @PostMapping
     public PaymentDTO savePayment(@RequestBody PaymentDTO dto) {
         Booking booking = bookingService.getBookingById(dto.getBookingId());
@@ -79,13 +79,13 @@ public class PaymentController {
         return PaymentMapper.toDTO(paymentService.savePayment(payment));
     }
 
-    // ✅ Xóa Payment
+
     @DeleteMapping("/{id}")
     public void deletePayment(@PathVariable Integer id) {
         paymentService.deletePayment(id);
     }
 
-    // ✅ Đổi trạng thái Payment
+
     @PutMapping("/{id}/status")
     public PaymentDTO updatePaymentStatus(
             @PathVariable Integer id,
